@@ -1,5 +1,10 @@
 package Problems;
 
+/*
+ * Problem: Find Neon numbers in a given range.
+ * Description: A Neon number is a number where the sum of digits of its square is equal to the number itself.
+ */
+
 import java.util.Scanner;
 
 public class NeonNumber {

@@ -1,5 +1,10 @@
 package Problems;
 
+/*
+ * Problem: Find Armstrong numbers in a given range.
+ * Description: An Armstrong number is a number that is equal to the sum of its own digits each raised to the power of the number of digits.
+ */
+
 import java.util.Scanner;
 
 public class ArmsStrong {

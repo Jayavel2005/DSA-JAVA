@@ -2,6 +2,11 @@ package Problems;
 
 import java.util.Scanner;
 
+/*
+ * Problem: Find the sum of odd numbers in a given range.
+ * Description: Given a starting and ending range, find the sum of all odd numbers within that range.
+ */
+
 public class SumOfOdd {
 
     public static void main(String[] args) {
@@ -11,6 +16,8 @@ public class SumOfOdd {
         int endRange = in.nextInt();
 
         System.out.println("Result: " + sumOffOdd(startRange, endRange));
+
+        in.close();
 
     }
 

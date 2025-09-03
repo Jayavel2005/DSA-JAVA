@@ -1,5 +1,10 @@
 package Problems;
 
+/*
+ * Problem: Extract the last digit from a given integer.
+ * Description: Given an integer, find its last digit.
+ */
+
 import java.util.Scanner;
 
 public class LastDigit {

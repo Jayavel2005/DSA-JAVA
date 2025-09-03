@@ -1,5 +1,10 @@
 package Problems;
 
+/*
+ * Problem: Determine if a given integer is even or odd.
+ * Description: An even number is an integer that is exactly divisible by 2.
+ */
+
 import java.util.Scanner;
 
 public class IsEven {
