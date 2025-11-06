@@ -15,7 +15,7 @@ class LinkedList {
     Node head;
 
     // Create a new node and add it to the end
-    public void create(int data) {  // fixed typo from 'creae' → 'create'
+    public void create(int data) { // fixed typo from 'creae' → 'create'
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
@@ -130,6 +130,27 @@ class LinkedList {
         newNode.next = temp.next;
         temp.next = newNode;
     }
+
+    public void removeAtPosition(Scanner in) {
+        int pos = in.nextInt();
+        if (pos == 1) {
+            this.removeFirst();
+        }
+        int count = 1;
+        Node temp = head;
+        Node prev = null;
+        while (temp != null && count < pos - 1) {
+            prev = temp;
+            temp = temp.next;
+            count++;
+        }
+        if (temp == null) {
+            System.out.println("Position out of bounds.");
+            return;
+        }
+
+        prev.next = temp.next;
+    }
 }
 
 // Main class must be outside LinkedList
@@ -153,6 +174,8 @@ public class sll {
         ll.insertAtPosition(in);
         System.out.println("\nAfter inserting at position:");
         ll.display();
+
+        ll.removeAtPosition(in);
 
         in.close();
     }
