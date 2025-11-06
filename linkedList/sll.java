@@ -1,5 +1,3 @@
-
-// package DSA-JAVA.linkedList;
 import java.util.*;
 
 // Node creation
@@ -14,10 +12,10 @@ class Node {
 }
 
 class LinkedList {
-
     Node head;
 
-    public void creae(int data) {
+    // Create a new node and add it to the end
+    public void create(int data) {  // fixed typo from 'creae' → 'create'
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
@@ -28,26 +26,24 @@ class LinkedList {
             }
             temp.next = newNode;
         }
-
     }
 
-    public void insertAtFirst(Scanner in) {
-        in.nextLine();
-        System.out.println("Enter the data to insert at first: ");
-        int data = in.nextInt();
+    // Insert node at the beginning
+    public void insertAtFirst(int data) {
         Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
-
-        this.display();
+        display();
     }
 
+    // Display all nodes
     public void display() {
-        Node temp = head;
-
-        if ((head == null)) {
+        if (head == null) {
             System.out.println("LinkedList is empty");
+            return;
         }
+
+        Node temp = head;
         while (temp != null) {
             System.out.print(temp.data);
             if (temp.next != null) {
@@ -55,41 +51,39 @@ class LinkedList {
             }
             temp = temp.next;
         }
+        System.out.println(); // add newline after printing
     }
 
-    public void insertAtLast(Scanner in) {
-        System.out.println("Enter the data to insert at last: ");
-
-        int data = in.nextInt();
+    // Insert node at the end
+    public void insertAtLast(int data) {
         Node newNode = new Node(data);
         if (head == null) {
-            this.creae(data);
+            head = newNode;
+            return;
         }
         Node temp = head;
         while (temp.next != null) {
             temp = temp.next;
         }
         temp.next = newNode;
-        temp = newNode;
-
     }
 
+    // Remove the first node
     public void removeFirst() {
         if (head == null) {
             System.out.println("LinkedList is empty");
-        } else if (head.next == null) {
-            head = null;
-        } else {
-            head = head.next;
+            return;
         }
-
+        head = head.next;
     }
 
+    // Remove the last node
     public void removeLast() {
         if (head == null) {
             System.out.println("LinkedList is empty");
             return;
         }
+
         if (head.next == null) {
             head = null;
             return;
@@ -101,31 +95,65 @@ class LinkedList {
         }
         temp.next = null;
     }
+
+    // Insert node at specific position
+    public void insertAtPosition(Scanner in) {
+        System.out.print("Enter the position to insert (position starts from 1): ");
+        int pos = in.nextInt();
+        System.out.print("Enter the data to insert: ");
+        int data = in.nextInt();
+
+        if (pos <= 0) {
+            System.out.println("Invalid position!");
+            return;
+        }
+
+        if (pos == 1) {
+            insertAtFirst(data);
+            return;
+        }
+
+        Node newNode = new Node(data);
+        Node temp = head;
+        int count = 1;
+
+        while (temp != null && count < pos - 1) {
+            temp = temp.next;
+            count++;
+        }
+
+        if (temp == null) {
+            System.out.println("Position out of bounds.");
+            return;
+        }
+
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
 }
 
+// Main class must be outside LinkedList
 public class sll {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        // number of nodes to insert
-        System.out.println("Enter the number of nodes to insert: ");
-        int n = in.nextInt();
+
         LinkedList ll = new LinkedList();
+
+        System.out.print("Enter the number of nodes to insert: ");
+        int n = in.nextInt();
+
+        System.out.println("Enter the data for " + n + " nodes:");
         for (int i = 0; i < n; i++) {
-            int data = in.nextInt();
-            ll.creae(data);
+            ll.create(in.nextInt());
         }
-        // linkedlist display;
+
+        System.out.println("\nInitial LinkedList:");
         ll.display();
-        // in.nextLine(); // linkedlist insert at first
-        // ll.insertAtFirst(in);
-        // ll.insertAtLast(in);
-        // in.nextLine();
-        ll.removeFirst();
-        System.out.println("\nAfter removing first element: ");
+
+        ll.insertAtPosition(in);
+        System.out.println("\nAfter inserting at position:");
         ll.display();
-        ll.removeLast();
-        System.out.println("\nAfter removing last element: ");
-        ll.display();
+
         in.close();
     }
 }
