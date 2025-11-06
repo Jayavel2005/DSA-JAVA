@@ -1,16 +1,3 @@
-
-// package DSA-JAVA.linkedList;
-import java.util.*;
-
-// Node creation
-class Node {
-    int data;
-    Node next;
-
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
 }
 
 class LinkedList {
@@ -44,10 +31,6 @@ class LinkedList {
 
     public void display() {
         Node temp = head;
-
-        if ((head == null)) {
-            System.out.println("LinkedList is empty");
-        }
         while (temp != null) {
             System.out.print(temp.data);
             if (temp.next != null) {
@@ -71,7 +54,7 @@ class LinkedList {
         }
         temp.next = newNode;
         temp = newNode;
-
+        this.display();
     }
 
     public void removeFirst() {
@@ -82,24 +65,7 @@ class LinkedList {
         } else {
             head = head.next;
         }
-
-    }
-
-    public void removeLast() {
-        if (head == null) {
-            System.out.println("LinkedList is empty");
-            return;
-        }
-        if (head.next == null) {
-            head = null;
-            return;
-        }
-
-        Node temp = head;
-        while (temp.next.next != null) {
-            temp = temp.next;
-        }
-        temp.next = null;
+        this.display();
     }
 }
 
@@ -120,12 +86,3 @@ public class sll {
         // ll.insertAtFirst(in);
         // ll.insertAtLast(in);
         // in.nextLine();
-        ll.removeFirst();
-        System.out.println("\nAfter removing first element: ");
-        ll.display();
-        ll.removeLast();
-        System.out.println("\nAfter removing last element: ");
-        ll.display();
-        in.close();
-    }
-}
