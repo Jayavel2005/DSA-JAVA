@@ -79,7 +79,7 @@
 // }
 import java.util.*;;
 
-public class Stacks {
+public class arraysPro {
 
     public static void main(String[] args) {
         int arr[] = { 1, 2, 3, 4, 5 };
